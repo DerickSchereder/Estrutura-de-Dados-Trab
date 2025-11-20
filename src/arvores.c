@@ -5,13 +5,13 @@
 int comp = 0;
 float horas_totais = 0;
 
+// Função que consulta um jogo está na árvore, atualiza o número de comparações e horas totais
 Nodo* consulta(Nodo *a, char *chave){
     while (a != NULL){
         comp++;
         int cmp = strcmp(a->jogo, chave);
 
         if (cmp == 0){
-           // printf("%s, horas: %.2f\n", a->jogo, a->horas);
             horas_totais+= a->horas;
             return a;}
         else if (cmp > 0)
@@ -24,7 +24,6 @@ Nodo* consulta(Nodo *a, char *chave){
 
 Nodo* ABP_insere(Nodo *a, char *titulo, float horas)
 {
-
 
     if (a == NULL)
     {

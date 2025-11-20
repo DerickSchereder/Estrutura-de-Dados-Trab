@@ -24,6 +24,8 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     FILE * lista_jogos_steam;
     FILE * lista_jogos_jogador;
 
+    char jogo_jogador[256];
+
     Nodo *ABP = NULL;
 
     lista_jogos_steam = fopen (argv[1], "r"); 
@@ -46,16 +48,14 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
     start = clock(); 
 
-    ABP = converte_ABP(lista_jogos_steam);
-
-    char jogo_jogador[256];
+    ABP = converte_ABP(lista_jogos_steam); // cria uma ABP com os jogos do arquivo
 
     while(fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador))
     {
         jogo_jogador[strcspn(jogo_jogador, "\r\n")] = '\0';  
-        consulta(ABP, jogo_jogador);
+        consulta(ABP, jogo_jogador); 
         
-    }
+    } // consulta cada jogo na lista do jogador
 
     end = clock(); 
 
@@ -65,6 +65,7 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     printf("Tempo: %.5f ms\n",miliseconds);
         
 
+    // deleta tudo depois de usar 
     destroi(ABP);
 
     fclose (lista_jogos_steam); 
