@@ -9,7 +9,6 @@
 //ctrl + shift + b
 // .\src\output\main.exe .\data\dataset.csv .\data\lista_jogador1.txt .\data\saida_lista.txt
 
-
 int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv armazena as strings correspondentes aos parâmentros digitados
 {
     if (argc!=4) {
@@ -42,10 +41,10 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
     // cria arvores com os jogos do arquivo
     arvores[numero_arvores++] = gera_info(converte_ABP(lista_jogos_steam), "ABP");
-    //arvores[numero_arvores++] = gera_info(converte_AVL(lista_jogos_steam), "ABP");
+    //arvores[numero_arvores++] = gera_info(converte_AVL(lista_jogos_steam), "AVL");
     //arvores[numero_arvores++] = gera_info(converte_SPLAY(lista_jogos_steam), "SPLAY");
     //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RN");
-
+   
 
     for(int w = 0; w < numero_arvores; w++){
         while(fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador))
@@ -54,6 +53,7 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
             consulta(arvores[w].raiz, jogo_jogador); 
             
         } // consulta cada jogo na lista do jogador
+    // atualiza informações da arvore
     arvores[w].comparacoes = comp;
     arvores[w].numero_nodos = numero_nodos;
     arvores[w].rotacoes = 0;
