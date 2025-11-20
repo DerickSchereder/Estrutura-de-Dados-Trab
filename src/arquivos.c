@@ -26,3 +26,18 @@ Nodo* converte_ABP(FILE *arq) {
     return arvore;
 }
 
+void cria_relatorio(char arq[]){
+    FILE *arquivo;
+    arquivo = fopen(arq, "w");
+    fprintf(arquivo, "Tempo total estimado: %f horas\n\n", horas_totais);
+    fprintf(arquivo, "======== ESTATÍSTICAS ABP ============\n");
+    fprintf(arquivo, "Número de Nodos: %d\n", numero_nodos);
+    fprintf(arquivo, "Altura: \n");
+    fprintf(arquivo, "Rotações: \n");
+    fprintf(arquivo, "Comparações: %d\n\n", comp);
+    
+
+
+    fclose(arquivo);
+
+}

@@ -4,6 +4,7 @@
 
 int comp = 0;
 float horas_totais = 0;
+int numero_nodos = 0;
 
 // Função que consulta um jogo está na árvore, atualiza o número de comparações e horas totais
 Nodo* consulta(Nodo *a, char *chave){
@@ -24,7 +25,7 @@ Nodo* consulta(Nodo *a, char *chave){
 
 Nodo* ABP_insere(Nodo *a, char *titulo, float horas)
 {
-
+    numero_nodos++;
     if (a == NULL)
     {
         a = (Nodo*) malloc(sizeof(Nodo));

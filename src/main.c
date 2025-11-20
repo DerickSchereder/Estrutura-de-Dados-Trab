@@ -59,6 +59,8 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
     end = clock(); 
 
+    cria_relatorio("saida_lista.txt");
+
     float miliseconds = (float)(end - start) / CLOCKS_PER_SEC * 1000; 
     printf("Horas: %.2fh \n",horas_totais);
     printf("comparacoes: %d\n", comp);
