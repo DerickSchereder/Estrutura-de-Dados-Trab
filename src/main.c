@@ -7,7 +7,7 @@
 #include "arquivos.h"
 
 //ctrl + shift + b
-//.\src\output\main.exe .\data\dataset.csv .\data\lista_jogador1.txt
+// .\src\output\main.exe .\data\dataset.csv .\data\lista_jogador1.txt .\data\saida_lista.txt
 
 
 int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv armazena as strings correspondentes aos parâmentros digitados
@@ -22,20 +22,18 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
     char jogo_jogador[256];
 
-
     ARVORE_INFO arvores[5];
     int numero_arvores = 0;
 
 
     lista_jogos_steam = fopen (argv[1], "r"); 
+    lista_jogos_jogador = fopen (argv[2], "r"); 
         
     if (lista_jogos_steam == NULL) {
         printf ("Erro ao abrir o arquivo %s",argv[1]);
         return 1;
     }
 
-    lista_jogos_jogador = fopen (argv[2], "r"); 
-        
     if (lista_jogos_jogador == NULL) {
         printf ("Erro ao abrir o arquivo %s",argv[2]);
         return 1;
