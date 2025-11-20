@@ -26,6 +26,8 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     char jogo_jogador[256];
 
     Nodo *ABP = NULL;
+    ARVORE_INFO arvores[4];
+
 
     lista_jogos_steam = fopen (argv[1], "r"); 
         
@@ -58,14 +60,9 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
     end = clock(); 
 
-    cria_relatorio("saida_lista.txt");
+    cria_relatorio("saida_lista.txt", arvores, sizeof(arvores)/sizeof(ARVORE_INFO));
 
-    float miliseconds = (float)(end - start) / CLOCKS_PER_SEC * 1000; 
-    printf("Horas: %.2fh \n",horas_totais);
-    printf("comparacoes: %d\n", comp);
-    printf("Tempo: %.5f ms\n",miliseconds);
         
-
     // deleta tudo depois de usar 
     destroi(ABP);
 
