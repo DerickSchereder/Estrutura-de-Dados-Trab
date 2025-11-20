@@ -1,2 +1,5 @@
 # Estrutura-de-Dados-Trab
 Trabalho da cadeira de Estrutura de dados UFRGS
+
+CTRL + SHIFT + B  pra compilar o códi e depois
+.\src\output\main.exe .\data\dataset.csv .\data\lista_jogador1.txt   no terminal para rodar o programa
