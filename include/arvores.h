@@ -8,6 +8,16 @@ typedef struct Nodo{
     struct Nodo *dir;
 }Nodo;
 
+typedef struct ARVORE_INFO{
+    Nodo* raiz;
+    char nome[64];
+    int numero_nodos;
+    int altura;
+    int rotacoes;
+    int comparacoes;
+}ARVORE_INFO;
+
+
 extern int comp; //variável para contar o número de comparações
 
 extern float horas_totais; //variável para contar as horas acumuladas dos jogos
@@ -19,6 +29,11 @@ Nodo* consulta(Nodo *a, char *chave);
 
 Nodo* ABP_insere(Nodo *a, char *titulo, float horas);
 
+int altura(Nodo *a);
+
 void destroi(Nodo *a);
 
-int altura(Nodo *a);
+void destroi_arvores(ARVORE_INFO arvores[], int tam);
+
+ARVORE_INFO gera_info(Nodo *a, char *nome);
+

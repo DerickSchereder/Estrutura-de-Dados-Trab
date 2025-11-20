@@ -3,6 +3,8 @@
 
 Nodo* converte_ABP(FILE *arq) {
     
+    rewind(arq);
+
     Nodo *arvore = NULL;
     char jogo_info[256];
     char titulo[256];
@@ -30,13 +32,13 @@ void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores){
     FILE *arquivo;
     arquivo = fopen(arq, "w");
 
-    fprintf(arquivo, "Tempo total estimado: %f horas\n\n", horas_totais);
+    fprintf(arquivo, "Tempo total estimado: %.2f horas\n\n", horas_totais);
     for(int i = 0; i < numero_arvores; i++)
     {
-    fprintf(arquivo, "======== ESTATÍSTICAS %s ============\n", toupper(arvores[i].nome));
+    fprintf(arquivo, "======== ESTATÍSTICAS %s ============\n", arvores[i].nome);
     fprintf(arquivo, "Número de Nodos: %d\n", arvores[i].numero_nodos);
     fprintf(arquivo, "Altura: %d\n", arvores[i].altura);
-    fprintf(arquivo, "Rotações: \n", arvores[i].rotacoes);
+    fprintf(arquivo, "Rotações: %d\n", arvores[i].rotacoes);
     fprintf(arquivo, "Comparações: %d\n\n", arvores[i].comparacoes);
     }
     

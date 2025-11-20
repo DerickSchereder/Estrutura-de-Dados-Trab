@@ -25,9 +25,11 @@ Nodo* consulta(Nodo *a, char *chave){
 
 Nodo* ABP_insere(Nodo *a, char *titulo, float horas)
 {
-    numero_nodos++;
+    
     if (a == NULL)
     {
+        numero_nodos++;
+
         a = (Nodo*) malloc(sizeof(Nodo));
         strcpy(a->jogo, titulo);
         a->horas = horas;
@@ -42,17 +44,6 @@ Nodo* ABP_insere(Nodo *a, char *titulo, float horas)
         a->dir = ABP_insere(a->dir,titulo,horas);
         
     return a;
-}
-
-
-
-void destroi(Nodo *a)
-{
-    if (a == NULL) return;
-
-    destroi(a->esq);
-    destroi(a->dir);
-    free(a);
 }
 
 int altura(Nodo *a)
@@ -72,4 +63,34 @@ int altura(Nodo *a)
             return altura(a->esq) + 1;
         }
     }
+}
+
+void destroi(Nodo *a)
+{
+    if (a == NULL) return;
+
+    destroi(a->esq);
+    destroi(a->dir);
+    free(a);
+}
+
+void destroi_arvores(ARVORE_INFO arvores[], int tam)
+{
+    for(int i = 0; i < tam; i++){
+        destroi(arvores[i].raiz);
+    }
+
+}
+
+ARVORE_INFO gera_info(Nodo *a, char *nome)
+{
+    ARVORE_INFO info;
+    strcpy(info.nome, nome);
+    info.raiz = a;
+    info.altura = altura(a);
+    info.numero_nodos = 0;
+    info.comparacoes = 0;
+    info.rotacoes = 0;
+    return info;
+
 }
