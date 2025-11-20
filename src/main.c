@@ -12,8 +12,8 @@
 
 int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv armazena as strings correspondentes aos parâmentros digitados
 {
-    if (argc!=3) {
-        printf ("Numero incorreto de parametros.\n Para chamar o programa digite: exemplo <arq_entrada> <arq_saida>\n");
+    if (argc!=4) {
+        printf ("Numero incorreto de parametros.\n Para chamar o programa digite: exemplo <arq_entrada.csv> <arq_entrada.txt> <arq_saida.txt>\n");
         return 1;
     }
     
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     }
 
     
-    cria_relatorio("saida_lista.txt", arvores, numero_arvores);
+    cria_relatorio(argv[3], arvores, numero_arvores);
 
         
     // deleta tudo depois de usar 
