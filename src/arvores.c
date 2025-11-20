@@ -5,6 +5,7 @@
 int comp = 0;
 float horas_totais = 0;
 int numero_nodos = 0;
+int altura = 0;
 
 // Função que consulta um jogo está na árvore, atualiza o número de comparações e horas totais
 Nodo* consulta(Nodo *a, char *chave){
@@ -53,4 +54,23 @@ void destroi(Nodo *a)
     destroi(a->esq);
     destroi(a->dir);
     free(a);
+}
+
+int altura(Nodo *a)
+{
+    if(a == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        if(altura(a->dir > altura(a->esq)))
+        {
+            return altura(a->dir) + 1;
+        }
+        else
+        {
+            return altura(a->esq) + 1;
+        }
+    }
 }
