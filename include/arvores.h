@@ -14,7 +14,6 @@ extern float horas_totais; //variável para contar as horas acumuladas dos jogos
 
 extern int numero_nodos; 
 
-extern int altura;
 
 Nodo* consulta(Nodo *a, char *chave);
 
