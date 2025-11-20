@@ -53,3 +53,22 @@ void destroi(Nodo *a)
     destroi(a->dir);
     free(a);
 }
+
+int altura(Nodo *a)
+{
+    if(a == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        if(altura(a->dir > altura(a->esq)))
+        {
+            return altura(a->dir) + 1;
+        }
+        else
+        {
+            return altura(a->esq) + 1;
+        }
+    }
+}

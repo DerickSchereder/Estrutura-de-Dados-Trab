@@ -17,3 +17,5 @@ Nodo* consulta(Nodo *a, char *chave);
 Nodo* ABP_insere(Nodo *a, char *titulo, float horas);
 
 void destroi(Nodo *a);
+
+int altura(Nodo *a);
