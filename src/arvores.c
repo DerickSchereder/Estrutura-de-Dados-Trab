@@ -88,7 +88,7 @@ ARVORE_INFO gera_info(Nodo *a, char *nome)
     strcpy(info.nome, nome);
     info.raiz = a;
     info.altura = altura(a);
-    info.numero_nodos = 0;
+    info.numero_nodos = numero_nodos;
     info.comparacoes = 0;
     info.rotacoes = 0;
     return info;

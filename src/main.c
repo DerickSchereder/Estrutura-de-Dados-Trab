@@ -19,8 +19,6 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     FILE * lista_jogos_steam;
     FILE * lista_jogos_jogador;
 
-    char jogo_jogador[256];
-
     ARVORE_INFO arvores[5];
     int numero_arvores = 0;
 
@@ -46,26 +44,10 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RN");
    
 
-    for(int w = 0; w < numero_arvores; w++){
-        while(fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador))
-        {
-            jogo_jogador[strcspn(jogo_jogador, "\r\n")] = '\0';  
-            consulta(arvores[w].raiz, jogo_jogador); 
-            
-        } // consulta cada jogo na lista do jogador
-    // atualiza informações da arvore
-    arvores[w].comparacoes = comp;
-    arvores[w].numero_nodos = numero_nodos;
-    arvores[w].rotacoes = 0;
-    comp = 0;
-    numero_nodos = 0;
-    rewind(lista_jogos_jogador);
-    }
-
+    processa_lista_jogador(lista_jogos_jogador, arvores, numero_arvores); // consulta os jogos e preenche a lista de árvores com as informações 
     
-    cria_relatorio(argv[3], arvores, numero_arvores);
+    cria_relatorio(argv[3], arvores, numero_arvores); // cria arquivo com o relatório
 
-        
     // deleta tudo depois de usar 
     destroi_arvores(arvores, numero_arvores);
 

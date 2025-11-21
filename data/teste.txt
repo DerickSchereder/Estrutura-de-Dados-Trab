@@ -1,5 +1,5 @@
-Stardew Valley  #n tem
-The Witcher 3    #no arquivo está "The Witcher 3 Wild Hunt" então não pega
-Cyberpunk 2077   #n tem
-Baldur’s Gate 3   #n tem
+Stardew Valley  
+The Witcher 3  
+Cyberpunk 2077  
+Baldur’s Gate 3  
 Portal 2

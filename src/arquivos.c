@@ -28,6 +28,32 @@ Nodo* converte_ABP(FILE *arq) {
     return arvore;
 }
 
+void processa_lista_jogador(FILE *lista_jogos_jogador,
+                            ARVORE_INFO arvores[],
+                            int numero_arvores)
+{
+    char jogo_jogador[256];
+
+    for (int w = 0; w < numero_arvores; w++) {
+        // zera variaveis globais antes de consultar cada árvore
+        comp = 0;
+
+        rewind(lista_jogos_jogador); 
+
+        while (fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador)) {
+            jogo_jogador[strcspn(jogo_jogador, "\r\n")] = '\0';
+            consulta(arvores[w].raiz, jogo_jogador);
+        } // consulta todos arquivos da lista_jogos_jogador
+        // atualiza as informações da árvore
+        arvores[w].comparacoes = comp;
+        arvores[w].rotacoes = 0;
+    }
+}
+
+
+
+
+
 void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores){
     FILE *arquivo;
     arquivo = fopen(arq, "w");
