@@ -5,6 +5,7 @@
 int comp = 0;
 float horas_totais = 0;
 int numero_nodos = 0;
+int rotacoes = 0;
 
 // Função que consulta um jogo está na árvore, atualiza o número de comparações e horas totais
 Nodo* consulta(Nodo *a, char *chave){

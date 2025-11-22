@@ -24,6 +24,8 @@ extern int comp; //variável para contar o número de comparações
 
 extern int numero_nodos; 
 
+extern int rotacoes;
+
 
 Nodo* consulta(Nodo *a, char *chave);
 
