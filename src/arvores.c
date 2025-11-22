@@ -56,7 +56,7 @@ int altura(Nodo *a)
     int h_esq = altura(a->esq);
     int h_dir = altura(a->dir);
 
-    return 1 + (h_esq > h_dir ? h_esq : h_dir);
+    return 1 + ((h_esq > h_dir) ? h_esq : h_dir);
 }
 
 void destroi(Nodo *a)

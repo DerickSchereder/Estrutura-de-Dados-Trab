@@ -51,7 +51,6 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
                 printf("Jogo %s não encontrado\n", jogo_jogador); 
         } // consulta todos arquivos da lista_jogos_jogador
         // atualiza as informações da árvore
-        printf("converte_ABP: li %d linhas\n", linhas);
         arvores[w].comparacoes = comp;
         arvores[w].rotacoes = rotacoes; 
     }
