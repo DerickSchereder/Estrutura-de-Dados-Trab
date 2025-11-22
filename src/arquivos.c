@@ -28,7 +28,7 @@ Nodo* converte_ABP(FILE *arq) {
     return arvore;
 }
 
-void processa_lista_jogador(FILE *lista_jogos_jogador,
+void consulta_lista_jogador(FILE *lista_jogos_jogador,
                             ARVORE_INFO arvores[],
                             int numero_arvores)
 {
@@ -37,7 +37,7 @@ void processa_lista_jogador(FILE *lista_jogos_jogador,
     for (int w = 0; w < numero_arvores; w++) {
         // zera variaveis globais antes de consultar cada árvore
         comp = 0;
-
+        horas_totais = 0;
         rewind(lista_jogos_jogador); 
 
         while (fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador)) {
@@ -46,7 +46,7 @@ void processa_lista_jogador(FILE *lista_jogos_jogador,
         } // consulta todos arquivos da lista_jogos_jogador
         // atualiza as informações da árvore
         arvores[w].comparacoes = comp;
-        arvores[w].rotacoes = 0;
+        arvores[w].rotacoes = 0; // como ainda não tem nenhuma arvore com rotações eu só zerei, depois tem que alterar aqui
     }
 }
 

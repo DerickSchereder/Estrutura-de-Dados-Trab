@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     ARVORE_INFO arvores[5];
     int numero_arvores = 0;
 
-
     lista_jogos_steam = fopen (argv[1], "r"); 
     lista_jogos_jogador = fopen (argv[2], "r"); 
         
@@ -41,10 +40,10 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
     arvores[numero_arvores++] = gera_info(converte_ABP(lista_jogos_steam), "ABP");
     //arvores[numero_arvores++] = gera_info(converte_AVL(lista_jogos_steam), "AVL");
     //arvores[numero_arvores++] = gera_info(converte_SPLAY(lista_jogos_steam), "SPLAY");
-    //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RN");
+    //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RUBRO-NEGRA");
    
 
-    processa_lista_jogador(lista_jogos_jogador, arvores, numero_arvores); // consulta os jogos e preenche a lista de árvores com as informações 
+    consulta_lista_jogador(lista_jogos_jogador, arvores, numero_arvores); // consulta os jogos e preenche a lista de árvores com as informações 
     
     cria_relatorio(argv[3], arvores, numero_arvores); // cria arquivo com o relatório
 

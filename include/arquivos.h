@@ -8,4 +8,4 @@ Nodo* converte_ABP(FILE *arq); // recebe o arquivo csv e retorna uma ABP os jogo
 
 void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores);
 
-void processa_lista_jogador(FILE *lista_jogos_jogador, ARVORE_INFO arvores[], int numero_arvores);
+void consulta_lista_jogador(FILE *lista_jogos_jogador, ARVORE_INFO arvores[], int numero_arvores);
