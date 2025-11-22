@@ -14,7 +14,7 @@ Nodo* converte_ABP(FILE *arq) {
     while (fgets(jogo_info, sizeof(jogo_info), arq)) {
         // jogo_info = <nome do jogo>,<hora>
         // remover \n do final
-        jogo_info[strcspn(jogo_info, "\r\n")] = '\0';
+        jogo_info[strcspn(jogo_info, "\n")] = '\0';
         
         token = strtok(jogo_info, ","); // token = <nome do jogo>
         strcpy(titulo, token);
@@ -33,6 +33,7 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
                             int numero_arvores)
 {
     char jogo_jogador[256];
+    Nodo* jogo_encontrado;
 
     for (int w = 0; w < numero_arvores; w++) {
         // zera variaveis globais antes de consultar cada árvore
@@ -42,8 +43,12 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
         rewind(lista_jogos_jogador); 
 
         while (fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador)) {
-            jogo_jogador[strcspn(jogo_jogador, "\r\n")] = '\0';
-            consulta(arvores[w].raiz, jogo_jogador);
+            jogo_jogador[strcspn(jogo_jogador, "\n")] = '\0';
+            jogo_encontrado = consulta(arvores[w].raiz, jogo_jogador);
+            if(jogo_encontrado)
+                horas_totais += jogo_encontrado->horas;    
+            else
+                printf("Jogo %s não encontrado\n", jogo_jogador); 
         } // consulta todos arquivos da lista_jogos_jogador
         // atualiza as informações da árvore
         arvores[w].comparacoes = comp;

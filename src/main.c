@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
         printf ("Numero incorreto de parametros.\n Para chamar o programa digite: exemplo <arq_entrada.csv> <arq_entrada.txt> <arq_saida.txt>\n");
         return 1;
     }
-    
+
     FILE * lista_jogos_steam;
     FILE * lista_jogos_jogador;
 
