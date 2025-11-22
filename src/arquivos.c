@@ -41,8 +41,8 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
         horas_totais = 0;
         rotacoes = 0;
         rewind(lista_jogos_jogador); 
-
-        while (fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador)) {
+        int linhas = 0;
+        while (fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador)) { linhas++;
             jogo_jogador[strcspn(jogo_jogador, "\n")] = '\0';
             jogo_encontrado = consulta(arvores[w].raiz, jogo_jogador);
             if(jogo_encontrado)
@@ -51,6 +51,7 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
                 printf("Jogo %s não encontrado\n", jogo_jogador); 
         } // consulta todos arquivos da lista_jogos_jogador
         // atualiza as informações da árvore
+        printf("converte_ABP: li %d linhas\n", linhas);
         arvores[w].comparacoes = comp;
         arvores[w].rotacoes = rotacoes; 
     }
