@@ -1,6 +1,7 @@
 #include "arvores.h"
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int comp = 0;
 float horas_totais = 0;
@@ -23,7 +24,6 @@ Nodo* consulta(Nodo *a, char *chave){
     return NULL;
 }
 
-
 Nodo* ABP_insere(Nodo *a, char *titulo, float horas)
 {
     
@@ -39,7 +39,7 @@ Nodo* ABP_insere(Nodo *a, char *titulo, float horas)
         numero_nodos++;
         return a;
     }
-    int cmp = strcmp(titulo, a->jogo);
+    int cmp = strcmp(titulo, a->jogo); 
     if (cmp < 0) //strcmp retorna um valor negativo se a primeira string vem antes em ordem alfabetica
         a->esq = ABP_insere(a->esq,titulo,horas);
     else if (cmp > 0)

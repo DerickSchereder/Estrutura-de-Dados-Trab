@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
+void normaliza_string(char *s); // põe as string todas minúsculas para que a aplicação não fique case-sensitive
 
 Nodo* converte_ABP(FILE *arq); // recebe o arquivo csv e retorna uma ABP os jogos por ordem alfabética
 

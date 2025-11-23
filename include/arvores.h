@@ -18,9 +18,9 @@ typedef struct ARVORE_INFO{
 }ARVORE_INFO;
 
 
-extern float horas_totais; //variável para contar as horas acumuladas dos jogos
+extern float horas_totais; 
 
-extern int comp; //variável para contar o número de comparações
+extern int comp; 
 
 extern int numero_nodos; 
 
