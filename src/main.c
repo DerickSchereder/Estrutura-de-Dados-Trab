@@ -8,15 +8,6 @@
 
 //ctrl + shift + b
 // .\src\output\main.exe .\data\dataset.csv .\data\lista_jogador1.txt .\data\saida_lista.txt
-void f(Nodo* ar, FILE* arq)
-    {
-        if(!ar) return;
-        f(ar->dir, arq);
-        fprintf(arq, "%s,%.2f\n", ar->jogo, ar->horas);
-        f(ar->esq, arq);
-
-    }
-
 int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv armazena as strings correspondentes aos parâmentros digitados
 {
     if (argc!=4) {
@@ -43,15 +34,11 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
         return 1;
     }
 
-
     // cria arvores com os jogos do arquivo
     arvores[numero_arvores++] = gera_info(converte_ABP(lista_jogos_steam), "ABP");
     //arvores[numero_arvores++] = gera_info(converte_AVL(lista_jogos_steam), "AVL");
     //arvores[numero_arvores++] = gera_info(converte_SPLAY(lista_jogos_steam), "SPLAY");
     //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RUBRO-NEGRA");
-
-
-    
 
     consulta_lista_jogador(lista_jogos_jogador, arvores, numero_arvores); // consulta os jogos e preenche a lista de árvores com as informações 
     
@@ -65,6 +52,3 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
         return 0;
     }
-
-
-
