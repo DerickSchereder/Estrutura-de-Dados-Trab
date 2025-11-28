@@ -85,6 +85,7 @@ ARVORE_INFO gera_info(Nodo *a, char *nome)
     info.numero_nodos = numero_nodos;
     info.comparacoes = 0;
     info.rotacoes = 0;
+    numero_nodos = 0;
     return info;
 
 }
