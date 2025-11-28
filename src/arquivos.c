@@ -46,7 +46,6 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
         // zera variaveis globais antes de consultar cada árvore
         comp = 0;
         horas_totais = 0;
-        rotacoes = 0;
         rewind(lista_jogos_jogador); 
 
         while (fgets(jogo_jogador, sizeof(jogo_jogador), lista_jogos_jogador)) { 
@@ -60,7 +59,6 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
         } // consulta todos arquivos da lista_jogos_jogador
         // atualiza as informações da árvore
         arvores[w].comparacoes = comp;
-        arvores[w].rotacoes = rotacoes; 
     }
 }
 

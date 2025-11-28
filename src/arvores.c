@@ -84,8 +84,9 @@ ARVORE_INFO gera_info(Nodo *a, char *nome)
     info.altura = altura(a);
     info.numero_nodos = numero_nodos;
     info.comparacoes = 0;
-    info.rotacoes = 0;
+    info.rotacoes = rotacoes;
     numero_nodos = 0;
+    rotacoes = 0;
     return info;
 
 }
@@ -136,6 +137,7 @@ Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok)
 
 Nodo* rotacao_direita(Nodo* p)
 {
+    rotacoes++;
     Nodo *u;
     u = p->esq;
     p->esq = u->dir;
@@ -147,6 +149,7 @@ Nodo* rotacao_direita(Nodo* p)
 
 Nodo* rotacao_esquerda(Nodo* p)
 {
+    rotacoes++;
     Nodo *u;
     u = p->dir;
     p->dir = u->esq;
@@ -158,6 +161,7 @@ Nodo* rotacao_esquerda(Nodo* p)
 
 Nodo* rotacao_dupla_direita (Nodo* p)
 {
+    rotacoes+=2;
     Nodo *u, *v;
     u = p->esq;
     v = u->dir;
@@ -180,6 +184,7 @@ Nodo* rotacao_dupla_direita (Nodo* p)
 }
 
 Nodo* rotacao_dupla_esquerda (Nodo *p){
+    rotacoes+=2;
 Nodo *z, *y;
 z = p->dir;
 y = z->esq;
