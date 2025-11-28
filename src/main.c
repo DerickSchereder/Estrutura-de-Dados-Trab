@@ -34,9 +34,16 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
         return 1;
     }
 
+    int rot = 0; // contador do número de rotações realizadas em cada árvore
+
     // cria arvores com os jogos do arquivo
-    arvores[numero_arvores++] = gera_info(converte_ABP(lista_jogos_steam), "ABP");
-    arvores[numero_arvores++] = gera_info(converte_AVL(lista_jogos_steam), "AVL");
+    Nodo* a_ABP = converte_ABP(lista_jogos_steam);
+    arvores[numero_arvores++] = gera_info(a_ABP, "ABP", &rot);
+
+    Nodo* a_AVL = converte_AVL(lista_jogos_steam, &rot);
+    arvores[numero_arvores++] = gera_info(a_AVL, "AVL", &rot);
+    
+    
     //arvores[numero_arvores++] = gera_info(converte_SPLAY(lista_jogos_steam), "SPLAY");
     //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RUBRO-NEGRA");
 

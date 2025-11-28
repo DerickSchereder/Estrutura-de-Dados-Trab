@@ -76,7 +76,7 @@ void destroi_arvores(ARVORE_INFO arvores[], int tam)
 
 }
 
-ARVORE_INFO gera_info(Nodo *a, char *nome)
+ARVORE_INFO gera_info(Nodo *a, char *nome, int* rot)
 {
     ARVORE_INFO info;
     strcpy(info.nome, nome);
@@ -84,12 +84,12 @@ ARVORE_INFO gera_info(Nodo *a, char *nome)
     info.altura = altura(a);
     info.numero_nodos = numero_nodos;
     info.comparacoes = 0;
-    info.rotacoes = 0;
+    info.rotacoes = *rot;
     return info;
 
 }
 
-Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok)
+Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok, int* rot)
 {
     
     if (a == NULL)
@@ -109,23 +109,23 @@ Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok)
     int cmp = strcmp(titulo, a->jogo); 
     if (cmp < 0) //strcmp retorna um valor negativo se a primeira string vem antes em ordem alfabetica
     {
-        a->esq = AVL_insere(a->esq,titulo,horas, ok);
+        a->esq = AVL_insere(a->esq,titulo,horas, ok, rot);
         if (*ok) {
             switch (a->fator) {
                 case -1: a->fator = 0; *ok = 0; break;
                 case 0: a->fator = 1; break;
-                case 1: a=Caso1(a,ok); break;
+                case 1: a=Caso1(a,ok); *rot += 1; break;
             }
         }
     }
     else if (cmp > 0)
     {
-        a->dir = AVL_insere(a->dir,titulo,horas, ok);
+        a->dir = AVL_insere(a->dir,titulo,horas, ok, rot);
         if (*ok) {
             switch (a->fator) {
                 case 1: a->fator = 0; *ok = 0; break;
                 case 0: a->fator = -1; break;
-                case -1: a = Caso2(a,ok); break;
+                case -1: a = Caso2(a,ok); *rot += 1; break;
             }
         }
     }

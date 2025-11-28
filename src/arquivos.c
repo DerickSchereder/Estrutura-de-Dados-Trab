@@ -35,9 +35,7 @@ Nodo* converte_ABP(FILE *arq) {
     return arvore;
 }
 
-void consulta_lista_jogador(FILE *lista_jogos_jogador,
-                            ARVORE_INFO arvores[],
-                            int numero_arvores)
+void consulta_lista_jogador(FILE *lista_jogos_jogador, ARVORE_INFO arvores[], int numero_arvores)
 {
     char jogo_jogador[256];
     Nodo* jogo_encontrado;
@@ -60,13 +58,9 @@ void consulta_lista_jogador(FILE *lista_jogos_jogador,
         } // consulta todos arquivos da lista_jogos_jogador
         // atualiza as informações da árvore
         arvores[w].comparacoes = comp;
-        arvores[w].rotacoes = rotacoes; 
+        arvores[w].rotacoes += rotacoes;
     }
 }
-
-
-
-
 
 void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores){
     FILE *arquivo;
@@ -86,7 +80,7 @@ void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores){
     fclose(arquivo);
 }
 
-Nodo* converte_AVL(FILE *arq) {
+Nodo* converte_AVL(FILE *arq, int* rot) {
     
     rewind(arq);
 
@@ -109,7 +103,7 @@ Nodo* converte_AVL(FILE *arq) {
         token = strtok(NULL, ","); // token = <hora>
         horas = strtof(token, NULL);   // função que converte string pra float
 
-        arvore = AVL_insere(arvore, titulo, horas, &ok);
+        arvore = AVL_insere(arvore, titulo, horas, &ok, rot);
     } // insere cada jogo do csv em uma ABP
 
     return arvore;
