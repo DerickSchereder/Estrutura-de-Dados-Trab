@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
     // cria arvores com os jogos do arquivo
     arvores[numero_arvores++] = gera_info(converte_ABP(lista_jogos_steam), "ABP");
-    //arvores[numero_arvores++] = gera_info(converte_AVL(lista_jogos_steam), "AVL");
+    arvores[numero_arvores++] = gera_info(converte_AVL(lista_jogos_steam), "AVL");
     //arvores[numero_arvores++] = gera_info(converte_SPLAY(lista_jogos_steam), "SPLAY");
     //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RUBRO-NEGRA");
 

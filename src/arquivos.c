@@ -85,3 +85,32 @@ void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores){
     
     fclose(arquivo);
 }
+
+Nodo* converte_AVL(FILE *arq) {
+    
+    rewind(arq);
+
+    Nodo *arvore = NULL;
+    char jogo_info[256];
+    char titulo[256];
+    float horas;
+    char *token;
+    int ok;
+    
+    while (fgets(jogo_info, sizeof(jogo_info), arq)) {
+        // jogo_info = <nome do jogo>,<hora>
+
+        jogo_info[strcspn(jogo_info, "\n")] = '\0'; // troca o \n por \0
+        
+        token = strtok(jogo_info, ","); // token = <nome do jogo>
+        strcpy(titulo, token);
+        normaliza_string(titulo); // normaliza o titulo antes de inserir pra que letras maiúsculas e minúsculas sejam consideradas iguais
+
+        token = strtok(NULL, ","); // token = <hora>
+        horas = strtof(token, NULL);   // função que converte string pra float
+
+        arvore = AVL_insere(arvore, titulo, horas, &ok);
+    } // insere cada jogo do csv em uma ABP
+
+    return arvore;
+}

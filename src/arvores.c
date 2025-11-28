@@ -88,3 +88,134 @@ ARVORE_INFO gera_info(Nodo *a, char *nome)
     return info;
 
 }
+
+Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok)
+{
+    
+    if (a == NULL)
+    {
+        a = (Nodo*) malloc(sizeof(Nodo));
+        if(!a) return NULL;
+
+        strcpy(a->jogo, titulo);
+        a->horas = horas;
+        a->esq = NULL;
+        a->dir = NULL;
+        a->fator = 0;
+        numero_nodos++;
+        *ok = 1;
+        return a;
+    }
+    int cmp = strcmp(titulo, a->jogo); 
+    if (cmp < 0) //strcmp retorna um valor negativo se a primeira string vem antes em ordem alfabetica
+    {
+        a->esq = AVL_insere(a->esq,titulo,horas, ok);
+        if (*ok) {
+            switch (a->fator) {
+                case -1: a->fator = 0; *ok = 0; break;
+                case 0: a->fator = 1; break;
+                case 1: a=Caso1(a,ok); break;
+            }
+        }
+    }
+    else if (cmp > 0)
+    {
+        a->dir = AVL_insere(a->dir,titulo,horas, ok);
+        if (*ok) {
+            switch (a->fator) {
+                case 1: a->fator = 0; *ok = 0; break;
+                case 0: a->fator = -1; break;
+                case -1: a = Caso2(a,ok); break;
+            }
+        }
+    }
+        
+    return a;
+}
+
+Nodo* rotacao_direita(Nodo* p)
+{
+    Nodo *u;
+    u = p->esq;
+    p->esq = u->dir;
+    u->dir = p;
+    p->fator = 0;
+    p = u;
+    return p;
+}
+
+Nodo* rotacao_esquerda(Nodo* p)
+{
+    Nodo *u;
+    u = p->dir;
+    p->dir = u->esq;
+    u->esq = p;
+    p->fator = 0;
+    p = u;
+    return p;
+}
+
+Nodo* rotacao_dupla_direita (Nodo* p)
+{
+    Nodo *u, *v;
+    u = p->esq;
+    v = u->dir;
+    u->dir = v->esq;
+    v->esq = u;
+    p->esq = v->dir;
+    v->dir = p;
+
+    if (v->fator == 1)
+        p->fator = -1;
+    else 
+        p->fator = 0;
+
+    if (v->fator == -1)
+        u->fator = 1;
+    else
+        u->fator = 0;
+    p = v;
+    return p;
+}
+
+Nodo* rotacao_dupla_esquerda (Nodo *p){
+Nodo *z, *y;
+z = p->dir;
+y = z->esq;
+z->esq = y->dir;
+y->dir = z;
+p->dir = y->esq;
+y->esq = p;
+if (y->fator == -1) p->fator = 1;
+else p->fator = 0;
+if (y->fator == 1) z->fator = -1;
+else z->fator = 0;
+p = y;
+return p;
+}
+
+Nodo* Caso1 (Nodo *a , int *ok)
+{
+Nodo *z;
+z = a->esq;
+if (z->fator == 1)
+a = rotacao_direita(a);
+else
+a = rotacao_dupla_direita(a);
+a->fator = 0;
+*ok = 0;
+return a;
+}
+
+Nodo* Caso2 (Nodo *a , int *ok)
+{
+Nodo *z;
+z = a->dir;
+if (z->fator == -1)
+a = rotacao_esquerda(a);
+else
+a = rotacao_dupla_esquerda(a);
+a->fator = 0;
+*ok = 0;
+return a;
+}

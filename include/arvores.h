@@ -6,6 +6,7 @@ typedef struct Nodo{
     float horas;
     struct Nodo *esq;
     struct Nodo *dir;
+    int fator;
 }Nodo;
 
 typedef struct ARVORE_INFO{
@@ -31,6 +32,8 @@ Nodo* consulta(Nodo *a, char *chave);
 
 Nodo* ABP_insere(Nodo *a, char *titulo, float horas);
 
+Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int* ok);
+
 int altura(Nodo *a);
 
 void destroi(Nodo *a);
@@ -39,3 +42,10 @@ void destroi_arvores(ARVORE_INFO arvores[], int tam);
 
 ARVORE_INFO gera_info(Nodo *a, char *nome);
 
+Nodo* Caso1 (Nodo *a , int *ok);
+Nodo* Caso2 (Nodo *a , int *ok);
+
+Nodo* rotacao_dupla_esquerda (Nodo *p);
+Nodo* rotacao_dupla_direita (Nodo *p);
+Nodo* rotacao_esquerda (Nodo *p);
+Nodo* rotacao_direita (Nodo *p);
