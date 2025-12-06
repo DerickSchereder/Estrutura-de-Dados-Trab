@@ -7,7 +7,7 @@ void normaliza_string(char *s); // põe as string todas minúsculas para que a a
 
 Nodo* converte_ABP(FILE *arq); // recebe o arquivo csv e retorna uma ABP os jogos por ordem alfabética
 
-Nodo* converte_AVL(FILE *arq, int* rot); // recebe o arquivo csv e retorna uma ABP os jogos por ordem alfabética
+Nodo* converte_AVL(FILE *arq); // recebe o arquivo csv e retorna uma ABP os jogos por ordem alfabética
 
 void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores);
 

@@ -78,7 +78,7 @@ void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores){
     fclose(arquivo);
 }
 
-Nodo* converte_AVL(FILE *arq, int* rot) {
+Nodo* converte_AVL(FILE *arq) {
     
     rewind(arq);
 
@@ -101,7 +101,7 @@ Nodo* converte_AVL(FILE *arq, int* rot) {
         token = strtok(NULL, ","); // token = <hora>
         horas = strtof(token, NULL);   // função que converte string pra float
 
-        arvore = AVL_insere(arvore, titulo, horas, &ok, rot);
+        arvore = AVL_insere(arvore, titulo, horas, &ok);
     } // insere cada jogo do csv em uma ABP
 
     return arvore;
