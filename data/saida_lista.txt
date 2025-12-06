@@ -1,14 +1,20 @@
-Tempo total estimado: 2687.21 horas
+Tempo total estimado: 0.00 horas
 
 ======== ESTATÍSTICAS ABP ============
 Número de Nodos: 3598
-Altura: 28
+Altura: 3598
 Rotações: 0
-Comparações: 3058
+Comparações: 356774
 
 ======== ESTATÍSTICAS AVL ============
 Número de Nodos: 3598
-Altura: 14
-Rotações: 1809
-Comparações: 2152
+Altura: 12
+Rotações: 3586
+Comparações: 2167
+
+======== ESTATÍSTICAS Rubro-Negra ============
+Número de Nodos: 0
+Altura: 0
+Rotações: 0
+Comparações: 0
 

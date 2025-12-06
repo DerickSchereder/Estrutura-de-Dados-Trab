@@ -40,7 +40,7 @@ void destroi(Nodo *a);
 
 void destroi_arvores(ARVORE_INFO arvores[], int tam);
 
-ARVORE_INFO gera_info(Nodo *a, char *nome);
+ARVORE_INFO gera_info(Nodo *a, int tipo);
 
 Nodo* Caso1 (Nodo *a , int *ok);
 Nodo* Caso2 (Nodo *a , int *ok);

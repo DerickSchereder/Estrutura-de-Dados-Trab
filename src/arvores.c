@@ -76,10 +76,18 @@ void destroi_arvores(ARVORE_INFO arvores[], int tam)
 
 }
 
-ARVORE_INFO gera_info(Nodo *a, char *nome)
+ARVORE_INFO gera_info(Nodo *a, int tipo)
 {
     ARVORE_INFO info;
-    strcpy(info.nome, nome);
+    switch (tipo)
+    {
+    case 0:
+        strcpy(info.nome, "ABP");
+        break;
+    case 1:
+        strcpy(info.nome, "AVL");
+        break;
+    }
     info.raiz = a;
     info.altura = altura(a);
     info.numero_nodos = numero_nodos;
@@ -91,7 +99,7 @@ ARVORE_INFO gera_info(Nodo *a, char *nome)
 
 }
 
-Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok)
+Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok) 
 {
     
     if (a == NULL)
@@ -135,7 +143,7 @@ Nodo* AVL_insere(Nodo *a, char *titulo, float horas, int *ok)
     return a;
 }
 
-Nodo* rotacao_direita(Nodo* p)
+Nodo* rotacao_direita(Nodo* p)//as funções de rotação são verções atualizadas das encontradas nos slides de aula
 {
     rotacoes++;
     Nodo *u;

@@ -36,15 +36,9 @@ int main(int argc, char *argv[]) //argc conta o número de parâmetros e argv ar
 
 
     // cria arvores com os jogos do arquivo
-    Nodo* a_ABP = converte_ABP(lista_jogos_steam);
-    arvores[numero_arvores++] = gera_info(a_ABP, "ABP");
-
-    Nodo* a_AVL = converte_AVL(lista_jogos_steam);
-    arvores[numero_arvores++] = gera_info(a_AVL, "AVL");
-    
-    
-    //arvores[numero_arvores++] = gera_info(converte_SPLAY(lista_jogos_steam), "SPLAY");
-    //arvores[numero_arvores++] = gera_info(converte_RN(lista_jogos_steam), "RUBRO-NEGRA");
+    for(int i = 0; i < 2; i++) {
+        arvores[numero_arvores++] = gera_info(converte_Arvore(lista_jogos_steam, i), i);
+    }
 
     consulta_lista_jogador(lista_jogos_jogador, arvores, numero_arvores); // consulta os jogos e preenche a lista de árvores com as informações 
     

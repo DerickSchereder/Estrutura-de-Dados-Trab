@@ -7,9 +7,10 @@ void normaliza_string(char *s){
     }
 }
 
-Nodo* converte_ABP(FILE *arq) {
+Nodo* converte_Arvore(FILE *arq, int tipo) {
     
     rewind(arq);
+    int ok = 0;
 
     Nodo *arvore = NULL;
     char jogo_info[256];
@@ -28,9 +29,16 @@ Nodo* converte_ABP(FILE *arq) {
 
         token = strtok(NULL, ","); // token = <hora>
         horas = strtof(token, NULL);   // função que converte string pra float
-
-        arvore = ABP_insere(arvore, titulo, horas);
-    } // insere cada jogo do csv em uma ABP
+        switch (tipo)
+        {
+            case 0: /* ABP */
+            arvore = ABP_insere(arvore, titulo, horas);
+            break;
+            case 1: /* AVL */
+            arvore = AVL_insere(arvore, titulo, horas, &ok);
+            break;
+        }
+    } // insere cada jogo do csv em uma árvore
 
     return arvore;
 }
@@ -76,33 +84,4 @@ void cria_relatorio(char arq[], ARVORE_INFO arvores[], int numero_arvores){
     }
     
     fclose(arquivo);
-}
-
-Nodo* converte_AVL(FILE *arq) {
-    
-    rewind(arq);
-
-    Nodo *arvore = NULL;
-    char jogo_info[256];
-    char titulo[256];
-    float horas;
-    char *token;
-    int ok;
-    
-    while (fgets(jogo_info, sizeof(jogo_info), arq)) {
-        // jogo_info = <nome do jogo>,<hora>
-
-        jogo_info[strcspn(jogo_info, "\n")] = '\0'; // troca o \n por \0
-        
-        token = strtok(jogo_info, ","); // token = <nome do jogo>
-        strcpy(titulo, token);
-        normaliza_string(titulo); // normaliza o titulo antes de inserir pra que letras maiúsculas e minúsculas sejam consideradas iguais
-
-        token = strtok(NULL, ","); // token = <hora>
-        horas = strtof(token, NULL);   // função que converte string pra float
-
-        arvore = AVL_insere(arvore, titulo, horas, &ok);
-    } // insere cada jogo do csv em uma ABP
-
-    return arvore;
 }
